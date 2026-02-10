@@ -4,6 +4,8 @@ An [Agent Skill](https://agentskills.io) that teaches AI agents how to write hig
 
 [![Install with skills CLI](https://img.shields.io/badge/skills.sh-write--skills-blue)](https://skills.sh/Halcyon666/write-skills)
 
+[English](README.md) | [中文](README.zh.md)
+
 ## What is this?
 
 A skill for creating skills. When an agent loads `write-skills`, it gains procedural knowledge for authoring other skills that follow the [open Agent Skills specification](https://agentskills.io/specification).

@@ -4,6 +4,8 @@
 
 [![使用 skills CLI 安装](https://img.shields.io/badge/skills.sh-write--skills-blue)](https://skills.sh/Halcyon666/write-skills)
 
+[English](README.md) | [中文](README.zh.md)
+
 ## 这是什么？
 
 一个用于创建 skill 的 skill。当智能体加载 `write-skills` 时，它会获得编写其他符合 [开放 Agent Skills 规范](https://agentskills.io/specification) 的 skill 的程序性知识。
