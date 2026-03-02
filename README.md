@@ -12,7 +12,11 @@
 ## 安装使用
 
 ```bash
-# 安装单个 skill
+npx skills add Halcyon666/write-skills --skill write-skills
+npx skills add Halcyon666/write-skills --skill chrome-bookmarks
+
+# 或查看所有可用 skills
+npx skills add Halcyon666/write-skills --list
 npx skills add Halcyon666/owesome-skills --skill write-skills
 npx skills add Halcyon666/owesome-skills --skill chrome-bookmarks
 
