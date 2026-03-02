@@ -1,112 +1,44 @@
-# write-skills
+# owesome-skills
 
-An [Agent Skill](https://agentskills.io) that teaches AI agents how to write high-quality, spec-compliant Agent Skills. Meta, but effective.
+一个包含多个 [Agent Skills](https://agentskills.io) 的技能集合。
 
-[![Install with skills CLI](https://img.shields.io/badge/skills.sh-write--skills-blue)](https://skills.sh/Halcyon666/write-skills)
+## 技能列表
 
-[English](README.md) | [中文](README.zh.md)
+| Skill | 描述 |
+|-------|------|
+| [write-skills](skills/write-skills/) | 创建符合规范的 Agent Skills (SKILL.md)。当用户要求创建 skill、写 SKILL.md、封装工作流时使用 |
+| [chrome-bookmarks](skills/chrome-bookmarks/) | 整理 Chrome 书签到分类文件夹。当用户要求清理、整理、分类、导入导出 Chrome 书签时使用 |
 
-## What is this?
-
-A skill for creating skills. When an agent loads `write-skills`, it gains procedural knowledge for authoring other skills that follow the [open Agent Skills specification](https://agentskills.io/specification).
-
-**Key capabilities:**
-- Validates SKILL.md frontmatter (name, description constraints)
-- Enforces progressive disclosure patterns (< 500 lines, reference files)
-- Guides spec-compliant structure and formatting
-- Teaches anti-patterns to avoid
-- Provides quality patterns (workflows, templates, feedback loops)
-
-## Installation
+## 安装使用
 
 ```bash
-npx skills add Halcyon666/write-skills
+# 安装单个 skill
+npx skills add Halcyon666/owesome-skills --skill write-skills
+npx skills add Halcyon666/owesome-skills --skill chrome-bookmarks
+
+# 或查看所有可用 skills
+npx skills add Halcyon666/owesome-skills --list
 ```
 
-Or with the skills CLI directly:
-
-```bash
-npx skills add Halcyon666/write-skills --skill write-skills
-```
-
-## Usage
-
-Once installed, ask your agent to create a skill:
-
-> "Create a skill for analyzing CSV files"
-
-> "Write a SKILL.md that helps with database migrations"
-
-> "Turn this workflow into a reusable skill"
-
-The agent will follow the `write-skills` instructions to produce a spec-compliant skill.
-
-## Example: Creating a New Skill
-
-Here's what happens when the skill is activated:
-
-### 1. Agent understands the domain
-Before writing, the agent identifies:
-- What capability the skill provides
-- When it should activate (trigger phrases)
-- What the agent doesn't already know
-
-### 2. Agent creates proper frontmatter
-```yaml
----
-name: csv-analyzer
-description: Analyzes CSV files for data quality issues and schema validation. Use when working with CSV files, data imports, or tabular data validation.
----
-```
-
-### 3. Agent structures the body
-Following the skill's 6-step workflow:
-- When to Use section with activation triggers
-- Step-by-step instructions
-- Quality patterns (checklists, templates)
-- Anti-patterns to avoid
-
-### 4. Agent validates against spec
-- Name: lowercase, hyphens, < 64 chars
-- Description: third person, < 1024 chars, includes triggers
-- Body: under 500 lines
-- No time-sensitive content
-- Forward slashes in all paths
-
-## Skill Structure
+## 项目结构
 
 ```
-write-skills/
-└── SKILL.md          # Complete skill definition (291 lines)
+owesome-skills/
+├── skills/
+│   ├── write-skills/
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   └── README.zh.md
+│   └── chrome-bookmarks/
+│       └── SKILL.md
+└── README.md
 ```
 
-This skill follows its own advice—it's concise, self-contained, and under 500 lines.
+## 添加新 Skill
 
-## Spec Compliance
+参考 [write-skills](skills/write-skills/) 技能来创建符合规范的 Agent Skill。
 
-| Requirement | Status |
-|---|---|
-| `name`: lowercase, hyphens, 1-64 chars | `write-skills` — 12 chars |
-| `name` matches directory | ✅ `write-skills/` directory |
-| `description`: non-empty, <1024 chars | 289 chars, third person |
-| No reserved words | None used |
-| Body under 500 lines | 291 lines |
-| Progressive disclosure | Single file, no nested refs |
-
-## Why This Matters
-
-Better skills = faster agent work. A well-written skill:
-- Activates at the right time (good description with triggers)
-- Provides exactly the context needed (concise, no fluff)
-- Follows patterns agents can execute reliably (clear workflows)
-- Avoids common pitfalls (documented anti-patterns)
-
-## Resources
+## 相关资源
 
 - [Agent Skills Specification](https://agentskills.io/specification)
 - [skills.sh Directory](https://skills.sh)
-- [Vercel Agent Skills Examples](https://github.com/vercel-labs/agent-skills)
-
-## License
-
-MIT — See [SKILL.md](SKILL.md) for details.
