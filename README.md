@@ -9,6 +9,7 @@
 | [write-skills](skills/write-skills/) | 创建符合规范的 Agent Skills (SKILL.md)。当用户要求创建 skill、写 SKILL.md、封装工作流时使用 |
 | [chrome-bookmarks](skills/chrome-bookmarks/) | 整理 Chrome 书签到分类文件夹。当用户要求清理、整理、分类、导入导出 Chrome 书签时使用 |
 | [fetching-ai-news](skills/fetching-ai-news/) | 抓取 AI 新闻与 vibe-coding 新闻，生成摘要，并可通过 Telegram 发送。当用户要求抓取 AI 新闻、汇总近期头条、生成 digest 或发送到 Telegram 时使用 |
+| [write-to-docusaurus](skills/write-to-docusaurus/) | 将 Markdown 文章写入 Docusaurus 项目的正确位置，支持中英文国际化。当用户要求添加文档、创建 MDX 文件、组织双语内容时使用 |
 
 ## 安装使用
 
@@ -16,6 +17,7 @@
 npx skills add Halcyon666/write-skills --skill write-skills
 npx skills add Halcyon666/write-skills --skill chrome-bookmarks
 npx skills add Halcyon666/write-skills --skill fetching-ai-news
+npx skills add Halcyon666/write-skills --skill write-to-docusaurus
 
 # 或查看所有可用 skills
 npx skills add Halcyon666/write-skills --list
@@ -41,6 +43,8 @@ owesome-skills/
 │   └── fetching-ai-news/
 │       ├── SKILL.md
 │       └── references/
+│   └── write-to-docusaurus/
+│       └── SKILL.md
 └── README.md
 ```
 
