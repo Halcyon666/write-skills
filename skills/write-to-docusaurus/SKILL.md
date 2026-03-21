@@ -7,6 +7,21 @@ description: Writes Markdown articles to a Docusaurus project with i18n support.
 
 Write Markdown/MDX articles to a Docusaurus project with i18n support. **Automatically creates both Chinese (default) and English versions.**
 
+## Known Project Defaults
+
+When the user does not provide a different target, prefer this known Docusaurus project:
+
+- Project root: `E:\all-project\summary`
+- Default locale: `zh-Hans`
+- English docs path: `i18n/en/docusaurus-plugin-content-docs/current/`
+- AI article category: `docs/ai-bigdata/AI/`
+- AI category label: `🤖 AI & LLM`
+
+For this project, AI/LLM/agent/vibe-coding/news-analysis content should usually go under:
+
+- Chinese: `docs/ai-bigdata/AI/`
+- English: `i18n/en/docusaurus-plugin-content-docs/current/ai-bigdata/AI/`
+
 ## When to Use
 
 - Adding new documentation articles to a Docusaurus site
@@ -66,6 +81,9 @@ project/
 3. **Check if category/subcategory exists**:
    - If yes → use existing path
    - If no → ask user whether to create new category or use existing one
+4. **Prefer project-specific defaults when known**:
+   - For `E:\all-project\summary`, AI-related analysis articles should default to `ai-bigdata/AI`
+   - Reuse existing category structure instead of inventing a nearby new path unless the user asks for it
 
 ### Step 2: Generate Frontmatter
 
@@ -98,6 +116,34 @@ last_update:
 2. Place in correct directory based on language
 3. Create parent directories if needed
 4. Update `_category_.json` if creating new category
+
+### Step 3.5: Apply MDX Safety Rules (MANDATORY)
+
+Before writing body content, enforce these MDX-specific rules:
+
+1. **Never use angle-bracket autolinks** like `<https://example.com>` in MDX content.
+   - Use Markdown links instead: `[https://example.com](https://example.com)` or `[label](https://example.com)`
+2. **Avoid raw HTML unless necessary**.
+   - Prefer normal Markdown syntax over embedded HTML tags.
+3. **Treat anything inside `<...>` as potentially dangerous in MDX**.
+   - MDX may parse it as JSX and fail compilation.
+4. **When including source links, always use Markdown link syntax**.
+5. **If copying text from articles, clean up characters that may confuse MDX/JSX parsing**.
+   - Especially stray `<`, `>`, `{`, or JSX-like fragments.
+6. **For news, analysis, or summary articles, include explicit original-source links in the document body**.
+   - Do not only mention outlet names; include concrete URLs.
+7. **When summarizing external articles, base conclusions on inspected source content, not just digest headlines**.
+
+### Step 3.6: Add Source Hygiene for Analysis Articles
+
+For AI news, product analysis, startup analysis, benchmark writeups, or ecosystem commentary:
+
+1. Include an **Original Sources** / **原文链接** section near the end of the article.
+2. Link every major source with a full Markdown link.
+3. Prefer primary sources over aggregators whenever possible:
+   - company blog / official docs / original HN thread / benchmark page / GitHub repo
+4. If a claim comes from discussion rather than the official page, say so explicitly.
+5. Do not present unverified benchmark claims as settled facts.
 
 ### Step 4: Create Bilingual Content (MANDATORY)
 
@@ -178,3 +224,17 @@ After writing, verify:
 - [ ] Frontmatter has all required fields
 - [ ] `id` matches filename
 - [ ] Directory structure mirrors between versions
+- [ ] Source links use Markdown link syntax, not `<https://...>` autolinks
+- [ ] No raw HTML / JSX-like content was introduced accidentally
+- [ ] The target Docusaurus project was validated after writing
+
+### Required post-write check
+
+After creating or editing docs, validate the target project before finishing:
+
+1. Read `docusaurus.config.*` first to confirm locale and docs structure.
+2. Run a local validation command in the target project:
+   - Prefer `pnpm build`
+   - If build is too heavy for the task, at least run `pnpm start` and confirm MDX compilation succeeds
+3. If the newly written doc causes a compile error, fix it before reporting completion.
+4. Mention any remaining warnings separately from hard errors.
