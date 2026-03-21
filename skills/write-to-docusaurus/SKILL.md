@@ -92,10 +92,10 @@ Required frontmatter fields:
 ```yaml
 ---
 id: article-slug           # URL-friendly identifier (lowercase, hyphens)
-title: Article Title       # Display title
-sidebar_label: Short Title # Sidebar display (optional, defaults to title)
+title: "Article Title"    # Always quote titles/descriptions that may contain `:` or other YAML-sensitive characters
+sidebar_label: "Short Title" # Sidebar display (optional, defaults to title)
 sidebar_position: 1        # Order in sidebar (check siblings for next number)
-description: Brief desc    # One-line description for SEO
+description: "Brief desc" # One-line description for SEO
 tags:                      # Relevant tags
   - tag1
   - tag2
@@ -104,6 +104,11 @@ last_update:
   author: username
 ---
 ```
+
+**Frontmatter safety rules:**
+- **Always quote `title`, `sidebar_label`, and `description`** in YAML frontmatter.
+- This is mandatory when values contain `:`, emoji, non-ASCII punctuation, or long natural-language phrases.
+- Prefer double quotes for consistency.
 
 **ID conventions:**
 - Lowercase letters, numbers, hyphens only
@@ -133,6 +138,10 @@ Before writing body content, enforce these MDX-specific rules:
 6. **For news, analysis, or summary articles, include explicit original-source links in the document body**.
    - Do not only mention outlet names; include concrete URLs.
 7. **When summarizing external articles, base conclusions on inspected source content, not just digest headlines**.
+8. **For internal anchor links, prefer explicit heading IDs when headings contain emoji, Chinese text, punctuation, or mixed-language text**.
+   - Example: `## 🔍 故障排除 {#故障排除}`
+   - Then link with `[故障排除](#故障排除)`
+9. **If a document links to its own section anchors, stabilize those anchors explicitly instead of relying on auto-generated slugs**.
 
 ### Step 3.6: Add Source Hygiene for Analysis Articles
 
@@ -213,6 +222,9 @@ last_update:
 | ID mismatch between languages | Use identical `id` in all translations |
 | Sidebar position conflict | Check existing files, use next available number |
 | Using `.md` instead of `.mdx` | Use `.mdx` for JSX component support |
+| YAML frontmatter breaks on `:` in title | Quote `title`, `sidebar_label`, and `description` |
+| Self-links to headings break | Add explicit heading IDs like `{#anchor-name}` |
+| Emoji/Chinese headings generate unstable anchor slugs | Do not rely on auto-generated heading slugs when linking internally |
 
 ## Validation
 
@@ -222,10 +234,12 @@ After writing, verify:
 - [ ] Both files have identical `id`
 - [ ] Both files have identical `sidebar_position`
 - [ ] Frontmatter has all required fields
+- [ ] `title`, `sidebar_label`, and `description` are quoted in YAML frontmatter
 - [ ] `id` matches filename
 - [ ] Directory structure mirrors between versions
 - [ ] Source links use Markdown link syntax, not `<https://...>` autolinks
 - [ ] No raw HTML / JSX-like content was introduced accidentally
+- [ ] Internal heading links use explicit IDs when headings are non-trivial
 - [ ] The target Docusaurus project was validated after writing
 
 ### Required post-write check
