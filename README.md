@@ -1,3 +1,5 @@
+
+
 # owesome-skills
 
 一个包含多个 [Agent Skills](https://agentskills.io) 的技能集合。
@@ -39,7 +41,8 @@ owesome-skills/
 │   │   ├── README.md
 │   │   └── README.zh.md
 │   ├── chrome-bookmarks/
-│   │   └── SKILL.md
+│   │   ├── SKILL.md
+│   │   └── references/
 │   └── fetching-ai-news/
 │       ├── SKILL.md
 │       └── references/
