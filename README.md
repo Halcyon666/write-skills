@@ -10,6 +10,7 @@
 | [chrome-bookmarks](skills/chrome-bookmarks/) | 整理 Chrome 书签到分类文件夹。当用户要求清理、整理、分类、导入导出 Chrome 书签时使用 |
 | [fetching-ai-news](skills/fetching-ai-news/) | 抓取 AI 新闻与 vibe-coding 新闻，生成摘要，并可通过 Telegram 发送。当用户要求抓取 AI 新闻、汇总近期头条、生成 digest 或发送到 Telegram 时使用 |
 | [write-to-docusaurus](skills/write-to-docusaurus/) | 将 Markdown 文章写入 Docusaurus 项目的正确位置，支持中英文国际化。当用户要求添加文档、创建 MDX 文件、组织双语内容时使用 |
+| [package-dsh-plugin-tgz](skills/package-dsh-plugin-tgz/) | 用 pack-plugin.cmd 将 DSH 插件打成离线可安装的 .tgz。当用户要求打包/离线打包插件、生成离线 tgz、内联运行时依赖时使用 |
 
 ## 安装使用
 
