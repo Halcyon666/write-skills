@@ -66,7 +66,7 @@
     install-plugin.cmd "<tgz>"
 ```
 
-无运行时依赖的插件（如 `next-ai-drawio/dsh`）没有 `offline install` 一行——纯文件 tgz 本就离线可装。
+无运行时依赖的插件（如 `next-ai-drawio/dsh`）没有 `offline install` 一行——纯文件 tgz 本就离线可装。注意这**只保证可离线安装**：如果插件的 `cordis.patch.yml` 用 `npx ...@latest` 启动服务，运行时仍会联网下载。配置型 MCP bundle 必须按 `references/offline-runtime-audit.md` 做运行时自包含审计并把服务 vendor 进包。
 
 ## 典型例子
 
